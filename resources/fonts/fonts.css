@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'BasementGrotesque';
-    src: url('/font/GrotesqueBlack.otf') format('opentype');
+    src: url('/resources/fonts/GrotesqueBlack.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
