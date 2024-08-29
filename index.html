@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixelated Text</title>
+    <link rel="stylesheet" href="/fonts.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            color: white;
+            font-family: 'BasementGrotesque', sans-serif;
+        }
+
+        .pixel-text {
+            font-size: 150px;
+            display: flex;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'BasementGrotesque', sans-serif;
+        }
+
+        /* Clases para cada letra */
+        .pixel-text span {
+            display: inline-block;
+        }
+
+        .b { filter: url(#pixelate1); }
+        .a { filter: url(#pixelate2); }
+        .s { filter: url(#pixelate3); }
+        .e { filter: url(#pixelate4); }
+        .m { filter: url(#pixelate5); }
+        .e2 { filter: url(#pixelate6); }
+        .n { filter: url(#pixelate7); }
+        .t { filter: url(#pixelate8); }
+
+        @keyframes scaleChange {
+            0% { scale: 0; }
+            100% { scale: 20; }
+        }
+
+        .animate-scale {
+            animation: scaleChange 2s infinite alternate;
+        }
+
+        #playPauseButton {
+            position: absolute;
+            bottom: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-family: 'BasementGrotesque', sans-serif;
+            opacity: 0.5;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        #playPauseButton.enabled {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #playPauseButton:hover {
+            background-color: #555;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        #playPauseButton:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="pixel-text">
+        <span class="b">B</span>
+        <span class="a">A</span>
+        <span class="s">S</span>
+        <span class="e">E</span>
+        <span class="m">M</span>
+        <span class="e2">E</span>
+        <span class="n">N</span>
+        <span class="t">T</span>
+    </div>
+
+    <button id="playPauseButton" disabled>Play</button>
+
+    <svg>
+        <!-- Filter for B -->
+        <filter id="pixelate1">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise">
+                <animate id="animate1" attributeName="scale" values="0;40;0" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1; 0.25 0.1 0.25 1" begin="indefinite" />
+            </feDisplacementMap>
+        </filter>
+
+        <!-- Filter for A -->
+        <filter id="pixelate2">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise">
+                <animate id="animate2" attributeName="scale" values="0;40;0" dur="4s" repeatCount="indefinite" begin="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1; 0.25 0.1 0.25 1" />
+            </feDisplacementMap>
+        </filter>
+
+        <!-- Filter for S -->
+        <filter id="pixelate3">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise">
+                <animate id="animate3" attributeName="scale" values="0;40;0" dur="4s" repeatCount="indefinite" begin="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1; 0.25 0.1 0.25 1" />
+            </feDisplacementMap>
+        </filter>
+
+        <!-- Filter for E -->
+        <filter id="pixelate4">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise">
+                <animate id="animate4" attributeName="scale" values="0;40;0" dur="4s" repeatCount="indefinite" begin="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1; 0.25 0.1 0.25 1" />
+            </feDisplacementMap>
+        </filter>
+
+        <!-- Filter for M -->
+        <filter id="pixelate5">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise">
+                <animate id="animate5" attributeName="scale" values="0;40;0" dur="4s" repeatCount="indefinite" begin="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1; 0.25 0.1 0.25 1" />
+            </feDisplacementMap>
+        </filter>
+
+        <!-- Filter for E2 -->
+        <filter id="pixelate6">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise">
+                <animate id="animate6" attributeName="scale" values="0;40;0" dur="4s" repeatCount="indefinite" begin="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1; 0.25 0.1 0.25 1" />
+            </feDisplacementMap>
+        </filter>
+
+        <!-- Filter for N -->
+        <filter id="pixelate7">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise">
+                <animate id="animate7" attributeName="scale" values="0;40;0" dur="4s" repeatCount="indefinite" begin="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1; 0.25 0.1 0.25 1" />
+            </feDisplacementMap>
+        </filter>
+
+        <!-- Filter for T -->
+        <filter id="pixelate8">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise">
+                <animate id="animate8" attributeName="scale" values="0;40;0" dur="4s" repeatCount="indefinite" begin="indefinite" calcMode="spline" keySplines="0.25 0.1 0.25 1; 0.25 0.1 0.25 1" />
+            </feDisplacementMap>
+        </filter>
+    </svg>
+
+    <script>
+        const playPauseButton = document.getElementById('playPauseButton');
+        let isPlaying = false;
+
+        function toggleAnimation() {
+            isPlaying = !isPlaying;
+            for (let i = 1; i <= 8; i++) {
+                const animate = document.getElementById(`animate${i}`);
+                if (isPlaying) {
+                    animate.beginElement();
+                    animate.setAttribute('begin', `${(i - 1) * 0.5}s`);
+                } else {
+                    animate.endElement();
+                }
+            }
+            playPauseButton.textContent = isPlaying ? 'Pause' : 'Play';
+        }
+
+        playPauseButton.addEventListener('click', toggleAnimation);
+
+        // Función para habilitar el botón cuando los filtros SVG se hayan cargado
+        function enablePlayButton() {
+            const filters = document.querySelectorAll('filter');
+            const allFiltersLoaded = Array.from(filters).every(filter => filter.childNodes.length > 0);
+            
+            if (allFiltersLoaded) {
+                playPauseButton.disabled = false;
+                playPauseButton.classList.add('enabled');
+            } else {
+                setTimeout(enablePlayButton, 100); // Verificar nuevamente después de 100ms
+            }
+        }
+
+        // Iniciar la verificación cuando el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', enablePlayButton);
+    </script>
+</body>
+</html>
