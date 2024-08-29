@@ -181,20 +181,15 @@
 
         playPauseButton.addEventListener('click', toggleAnimation);
 
-        // Función para habilitar el botón cuando los filtros SVG se hayan cargado
+        // Función para habilitar el botón después de 3 segundos
         function enablePlayButton() {
-            const filters = document.querySelectorAll('filter');
-            const allFiltersLoaded = Array.from(filters).every(filter => filter.childNodes.length > 0);
-            
-            if (allFiltersLoaded) {
+            setTimeout(() => {
                 playPauseButton.disabled = false;
                 playPauseButton.classList.add('enabled');
-            } else {
-                setTimeout(enablePlayButton, 100); // Verificar nuevamente después de 100ms
-            }
+            }, 3000);
         }
 
-        // Iniciar la verificación cuando el DOM esté completamente cargado
+        // Iniciar la habilitación del botón cuando el DOM esté completamente cargado
         document.addEventListener('DOMContentLoaded', enablePlayButton);
     </script>
 </body>
